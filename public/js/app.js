@@ -112,7 +112,7 @@ var PostBox = React.createClass({
       url: this.props.submit_url,
       dataType: 'json',
       type: 'POST',
-      data: {link: post.link, published: post.is_published, message: post.text, access_token: this.state.access_token, scheduled_post_date: this.state.scheduled_post_date},
+      data: {link: post.link, published: post.is_published, message: post.text, access_token: this.state.access_token},
       success: function(data) {
         $.ajax({
           url: "https://graph.facebook.com/v2.7/" + data["id"],
@@ -186,6 +186,7 @@ var PostBox = React.createClass({
   componentDidMount: function() {
     this.loadPostsFromServer();
   },
+
   login: function() {
     (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -359,4 +360,4 @@ ReactDOM.render(
   <PostBox submit_url="https://graph.facebook.com/v2.7/1844138332485211/feed" url="https://graph.facebook.com/v2.7/1844138332485211/promotable_posts" />,
   document.getElementById('content')
 );
-  
+
